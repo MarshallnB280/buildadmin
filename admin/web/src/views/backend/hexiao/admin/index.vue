@@ -30,6 +30,45 @@ import TableHeader from '/@/components/table/header/index.vue'
 const { t } = useI18n()
 const tableRef = ref()
 const optButtons = defaultOptButtons(['edit', 'delete'])
+
+// 自定义一个新的按钮
+let newButton: OptButton[] = [
+    {
+        // 渲染方式:tipButton=带tip的按钮,confirmButton=带确认框的按钮,moveButton=移动按钮
+        render: 'tipButton',
+        // 按钮名称
+        name: 'info',
+        // 鼠标放置时的 title 提示
+        title: '产品授权',
+        // 直接在按钮内显示的文字，title 有值时可为空
+        text: '产品授权',
+        // 按钮类型，请参考 element plus 的按钮类型
+        type: 'primary',
+        // 按钮 icon
+        icon: '',
+        class: 'table-row-info',
+        // tipButton 禁用 tip
+        disabledTip: false,
+        // 自定义点击事件
+        click: (row: TableRow, field: TableColumn) => {
+            alert(1);
+        },
+        // 按钮是否显示，请返回布尔值
+        display: (row: TableRow, field: TableColumn) => {
+            return true
+        },
+        // 按钮是否禁用，请返回布尔值
+        disabled: (row: TableRow, field: TableColumn) => {
+            return false
+        },
+        // 自定义el-button属性
+        attr: {}
+    },
+]
+
+// 新按钮合入到默认的按钮数组
+var optBtn = newButton.concat(optButtons)
+
 const baTable = new baTableClass(
     new baTableApi('/admin/hexiao.Admin/'),
     {
@@ -40,7 +79,6 @@ const baTable = new baTableClass(
             { label: t('hexiao.admin.pid'), prop: 'pid', align: 'center', operator: 'RANGE', sortable: false },
             { label: t('hexiao.admin.id_line'), prop: 'id_line', align: 'center', operatorPlaceholder: t('Fuzzy query'), operator: 'LIKE', sortable: false },
             { label: t('hexiao.admin.robot_num'), prop: 'robot_num', align: 'center', operator: 'RANGE', sortable: false },
-            { label: t('hexiao.admin.type'), prop: 'type', align: 'center', render: 'tag', operator: '=', sortable: false, replaceValue: { 0: 'type 0', 1: 'type 1', 2: 'type 2' } },
             { label: t('hexiao.admin.username'), prop: 'username', align: 'center', operatorPlaceholder: t('Fuzzy query'), operator: 'LIKE', sortable: false },
             { label: t('hexiao.admin.avatar'), prop: 'avatar', align: 'center', render: 'image', operator: false },
             { label: t('hexiao.admin.loginfailure'), prop: 'loginfailure', align: 'center', operator: 'RANGE', sortable: false },
@@ -53,7 +91,7 @@ const baTable = new baTableClass(
             { label: t('hexiao.admin.total_dec'), prop: 'total_dec', align: 'center', operator: 'RANGE', sortable: false },
             { label: t('hexiao.admin.createtime'), prop: 'createtime', align: 'center', render: 'datetime', operator: 'RANGE', sortable: 'custom', width: 160, timeFormat: 'yyyy-mm-dd hh:MM:ss' },
             { label: t('hexiao.admin.status'), prop: 'status', align: 'center', render: 'tag', operator: '=', sortable: false, replaceValue: { 1: t('hexiao.admin.status 1'), 0: t('hexiao.admin.status 0') } },
-            { label: t('operate'), align: 'center', width: 100, render: 'buttons', buttons: optButtons, operator: false },
+            { label: t('operate'), align: 'center', width: 300, render: 'buttons', buttons: optBtn, operator: false },
         ],
         dblClickNotEditColumn: [undefined],
     },

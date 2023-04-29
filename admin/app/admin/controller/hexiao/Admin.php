@@ -6,6 +6,7 @@ use ba\Random;
 use ba\Tree;
 use Exception;
 use app\common\controller\Backend;
+use app\admin\model\Admin as AdminModel;
 use think\db\exception\PDOException;
 use think\exception\ValidateException;
 use think\facade\Db;
@@ -34,7 +35,7 @@ class Admin extends Backend
     public function initialize()
     {
         parent::initialize();
-        $this->model = new \app\admin\model\hexiao\Admin;
+        $this->model = new AdminModel();
         $this->tree  = Tree::instance();
     }
 
