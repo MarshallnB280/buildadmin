@@ -413,7 +413,6 @@ class Auth extends \ba\Auth
         $rules         = $this->getRuleIds();
         $allAuthGroups = [];
         $groups        = AdminGroup::where('status', '1')->select();
-
         foreach ($groups as $group) {
             if ($group['rules'] == '*') {
                 continue;
