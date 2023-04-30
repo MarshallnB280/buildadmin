@@ -68,7 +68,7 @@
                         <div class="small-panel-content">
                             <div class="content-left">
                                 <Icon color="#F48595" size="20" name="fa fa-object-group" />
-                                <span id="addons_number">875</span>
+                                <span id="addons_number">100000</span>
                             </div>
                             <div class="content-right">+88%</div>
                         </div>
@@ -217,13 +217,30 @@ const initUserGrowthChart = () => {
         },
         xAxis: {
             data: [
-                t('dashboard.Monday'),
-                t('dashboard.Tuesday'),
-                t('dashboard.Wednesday'),
-                t('dashboard.Thursday'),
-                t('dashboard.Friday'),
-                t('dashboard.Saturday'),
-                t('dashboard.Sunday'),
+                '00',
+                '01',
+                '02',
+                '03',
+                '04',
+                '05',
+                '06',
+                '07',
+                '08',
+                '09',
+                '10',
+                '11',
+                '12',
+                '13',
+                '14',
+                '15',
+                '16',
+                '17',
+                '18',
+                '19',
+                '20',
+                '21',
+                '22',
+                '23',
             ],
         },
         yAxis: {},
@@ -236,7 +253,7 @@ const initUserGrowthChart = () => {
         series: [
             {
                 name: t('dashboard.Visits'),
-                data: [100, 160, 280, 230, 190, 200, 480],
+                data: [100, 160, 280, 230, 190, 200, 480,100, 160, 280, 230, 190, 200, 480,100, 160, 280, 230, 190, 200, 480,480,480,480],
                 type: 'line',
                 smooth: true,
                 areaStyle: {
@@ -245,7 +262,7 @@ const initUserGrowthChart = () => {
             },
             {
                 name: t('dashboard.Registration volume'),
-                data: [45, 180, 146, 99, 210, 127, 288],
+                data: [100, 160, 280, 230, 190, 200, 480,100, 160, 280, 230, 190, 200, 480,100, 160, 280, 230, 190, 200, 480,480,480,4800],
                 type: 'line',
                 smooth: true,
                 areaStyle: {

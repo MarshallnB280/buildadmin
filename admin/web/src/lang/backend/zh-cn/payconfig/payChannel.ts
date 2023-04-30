@@ -5,6 +5,8 @@ export default {
     pay_api__name: '接口名字',
     mashang_channels_id: '核销产品',
     mashang_channels__name: '产品名',
+    sys_rate: '系统费率',
+    channel_rate: '通道费率',
     pay_type: '支付方式',
     'pay_type qq': 'QQ',
     'pay_type wechat': '微信',

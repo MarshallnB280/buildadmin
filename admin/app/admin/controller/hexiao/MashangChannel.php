@@ -20,7 +20,7 @@ class MashangChannel extends Backend
 
     protected $preExcludeFields = ['id'];
 
-    protected $withJoinTable = ['admin'];
+    protected $withJoinTable = ['admin', 'mashangChannels'];
 
     protected $quickSearchField = ['id'];
 
@@ -48,7 +48,7 @@ class MashangChannel extends Backend
             ->where($where)
             ->order($order)
             ->paginate($limit);
-        $res->visible(['admin' => ['nickname']]);
+        $res->visible(['admin' => ['nickname'],'mashangChannels' => ['name','logo']]);
 
         $this->success('', [
             'list'   => $res->items(),

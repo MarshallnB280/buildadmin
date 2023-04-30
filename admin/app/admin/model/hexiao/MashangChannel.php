@@ -27,4 +27,9 @@ class MashangChannel extends Model
     {
         return $this->belongsTo(\app\admin\model\hexiao\Admin::class, 'admin_id', 'id');
     }
+
+    public function mashangChannels()
+    {
+        return $this->belongsTo(\app\admin\model\payconfig\MashangChannels::class, 'mashang_channels_id', 'id');
+    }
 }

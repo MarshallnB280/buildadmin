@@ -42,6 +42,16 @@ class PayChannel extends Model
         return is_array($value) ? implode(',', $value) : $value;
     }
 
+    public function getSysRateAttr($value): float
+    {
+        return (float)$value;
+    }
+
+    public function getChannelRateAttr($value): float
+    {
+        return (float)$value;
+    }
+
     public function getDeviceAttr($value): array
     {
         if ($value === '' || $value === null) return [];

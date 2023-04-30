@@ -5,6 +5,8 @@ export default {
     pay_api__name: 'name',
     mashang_channels_id: 'mashang_channels_id',
     mashang_channels__name: 'name',
+    sys_rate: 'sys_rate',
+    channel_rate: 'channel_rate',
     pay_type: 'pay_type',
     'pay_type qq': 'pay_type qq',
     'pay_type wechat': 'pay_type wechat',

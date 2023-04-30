@@ -274,19 +274,22 @@ class Admin extends Backend
 
         $admin_info = $this->auth->getAdmin();
 
+        list($where, $alias, $limit, $order) = $this->queryBuilder();
+
         // 读取用户组所有权限规则
-        $rules = $this->model
+        $user_list = $this->model
             ->where($where)
+            ->alias($alias)
             ->where(function ($query) use($admin_info){
                 if ($admin_info['type'] == $this->user_type){
                     $query->where('id_line', 'like', '%,'.$admin_info['id'].',%');
                 }
             })
             ->where('type', $this->user_type)
-            ->order('id asc')
+            ->order($order)
             ->select()->toArray();
 
         // 如果要求树状，此处先组装好 children
-        return  $this->tree->assembleChild($rules);
+        return  $this->tree->assembleChild($user_list);
     }
 }

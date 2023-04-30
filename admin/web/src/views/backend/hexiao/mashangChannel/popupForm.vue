@@ -29,7 +29,7 @@
                     :rules="rules"
                 >
                     <FormItem :label="t('hexiao.mashangChannel.admin_id')" type="remoteSelect" v-model="baTable.form.items!.admin_id" prop="admin_id" :input-attr="{ pk: 'admin.id', field: 'nickname', 'remote-url': '/admin/hexiao.Admin/index' }" :placeholder="t('Please select field', { field: t('hexiao.mashangChannel.admin_id') })" />
-                    <FormItem :label="t('hexiao.mashangChannel.mashang_channels_id')" type="remoteSelect" v-model="baTable.form.items!.mashang_channels_id" prop="mashang_channels_id" :input-attr="{ pk: '.id', field: 'name', 'remote-url': '' }" :placeholder="t('Please select field', { field: t('hexiao.mashangChannel.mashang_channels_id') })" />
+                    <FormItem :label="t('hexiao.mashangChannel.mashang_channels_id')" type="remoteSelect" v-model="baTable.form.items!.mashang_channels_id" prop="mashang_channels_id" :input-attr="{ pk: 'mashang_channels.id', field: 'name', 'remote-url': '/admin/payconfig.MashangChannels/index' }" :placeholder="t('Please select field', { field: t('hexiao.mashangChannel.mashang_channels_id') })" />
                     <FormItem :label="t('hexiao.mashangChannel.weigh')" type="number" prop="weigh" :input-attr="{ step: 1 }" v-model.number="baTable.form.items!.weigh" :placeholder="t('Please input field', { field: t('hexiao.mashangChannel.weigh') })" />
                     <FormItem :label="t('hexiao.mashangChannel.switch')" type="switch" v-model="baTable.form.items!.switch" prop="switch" :data="{ content: { 0: t('hexiao.mashangChannel.switch 0'), 1: t('hexiao.mashangChannel.switch 1') } }" />
                 </el-form>
