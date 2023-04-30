@@ -26,9 +26,18 @@ import { useI18n } from 'vue-i18n'
 import PopupForm from './popupForm.vue'
 import Table from '/@/components/table/index.vue'
 import TableHeader from '/@/components/table/header/index.vue'
-
+import { useRoute } from 'vue-router'
+const route = useRoute()
 const { t } = useI18n()
 const tableRef = ref()
+
+interface Props {
+    adminId: string
+}
+const props = withDefaults(defineProps<Props>(), {
+    adminId: '',
+})
+
 const optButtons = defaultOptButtons(['weigh-sort', 'edit', 'delete'])
 const baTable = new baTableClass(
     new baTableApi('/admin/hexiao.MashangChannel/'),
@@ -37,11 +46,38 @@ const baTable = new baTableClass(
         column: [
             { type: 'selection', align: 'center', operator: false },
             { label: t('hexiao.mashangChannel.id'), prop: 'id', align: 'center', width: 70, operator: 'RANGE', sortable: 'custom' },
-            { label: t('hexiao.mashangChannel.admin_id'), prop: 'admin_id', align: 'center', operatorPlaceholder: t('Fuzzy query'), operator: 'LIKE' },
-            { label: t('hexiao.mashangChannel.admin__nickname'), prop: 'admin.nickname', align: 'center', operatorPlaceholder: t('Fuzzy query'), render: 'tags', operator: 'LIKE', replaceValue: { } },
-            { label: t('hexiao.mashangChannel.mashang_channels_id'), prop: 'mashang_channels_id', align: 'center', operatorPlaceholder: t('Fuzzy query'), operator: 'LIKE' },
+            {
+                label: t('hexiao.mashangChannel.admin_id'),
+                prop: 'admin_id',
+                align: 'center',
+                operatorPlaceholder: t('Fuzzy query'),
+                operator: 'LIKE',
+            },
+            {
+                label: t('hexiao.mashangChannel.admin__nickname'),
+                prop: 'admin.nickname',
+                align: 'center',
+                operatorPlaceholder: t('Fuzzy query'),
+                render: 'tags',
+                operator: 'LIKE',
+            },
+            {
+                label: t('hexiao.mashangChannel.mashang_channels_id'),
+                prop: 'mashang_channels_id',
+                align: 'center',
+                operatorPlaceholder: t('Fuzzy query'),
+                operator: 'LIKE',
+            },
             { label: t('hexiao.mashangChannel.weigh'), prop: 'weigh', align: 'center', operator: false, sortable: 'custom' },
-            { label: t('hexiao.mashangChannel.switch'), prop: 'switch', align: 'center', render: 'switch', operator: '=', sortable: false, replaceValue: { 0: t('hexiao.mashangChannel.switch 0'), 1: t('hexiao.mashangChannel.switch 1') } },
+            {
+                label: t('hexiao.mashangChannel.switch'),
+                prop: 'switch',
+                align: 'center',
+                render: 'switch',
+                operator: '=',
+                sortable: false,
+                replaceValue: { 0: t('hexiao.mashangChannel.switch 0'), 1: t('hexiao.mashangChannel.switch 1') },
+            },
             { label: t('operate'), align: 'center', width: 140, render: 'buttons', buttons: optButtons, operator: false },
         ],
         dblClickNotEditColumn: [undefined, 'switch'],
@@ -61,6 +97,8 @@ onMounted(() => {
         baTable.initSort()
         baTable.dragSort()
     })
+    // adminId
+    console.log(route.query)
 })
 </script>
 
