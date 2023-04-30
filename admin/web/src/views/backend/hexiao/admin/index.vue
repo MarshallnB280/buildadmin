@@ -16,7 +16,7 @@
         <PopupForm />
 
         <!-- <MashangChannel v-bind:adminId="state.preview.adminId" /> -->
-        <el-dialog v-model="state.preview.show" title="标题" :append-to-body="true" :center="true" class="ba-upload-preview">
+        <el-dialog v-model="state.preview.show" title="积分变更" :append-to-body="true" :center="true" class="ba-upload-preview">
             <div class="ba-upload-preview-scroll ba-scroll-style" style="height: 50vh">
                 <el-scrollbar height="96vh">
                     <el-form class="form-box" :model="items" label-width="120px" label-position="right">
@@ -174,7 +174,7 @@ let newButton: OptButton[] = [
         click: (row: TableRow, field: TableColumn) => {
             // alert(1)
             console.log(row.id)
-            router.push({ name: 'hexiao/mashangChannel', query: { adminId: row.id } })
+            router.push({ name: 'hexiao/mashangChannel', query: { adminId: row.id, nickname: row.nickname } })
             // nextTick(() => {
             //     state.preview.show = true
             // })
@@ -334,7 +334,6 @@ onMounted(() => {
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Disable from '/@/layouts/frontend/container/disable.vue'
 export default defineComponent({
     name: 'hexiao/admin',
 })
@@ -343,7 +342,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .form-box {
     width: 98%;
-    height: 50vh;
+    height: 500px;
     margin: 40px auto;
 }
 .btn_ {
